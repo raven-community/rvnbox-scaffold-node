@@ -26,21 +26,21 @@ let rootSeed = RVNBOX.Mnemonic.toSeed(mnemonic);
 let masterHDNode = RVNBOX.HDNode.fromSeed(rootSeed);
 
 // HDNode of BIP44 account
-let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'");
-console.log(`BIP44 Account: "m/44'/145'/0'"`);
+let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/0'/175'/0'");
+console.log(`BIP44 Account: "m/0'/175'/0'"`);
 
 for (let i = 0; i < 10; i++) {
-  let childNode = masterHDNode.derivePath(`m/44'/145'/0'/0/${i}`);
+  let childNode = masterHDNode.derivePath(`m/0'/175'/0'/0/${i}`);
   console.log(
-    `m/44'/145'/0'/0/${i}: ${RVNBOX.HDNode.toRvn2Address(childNode)}`
+    `m/0'/175'/0'/0/${i}: ${RVNBOX.HDNode.toLegacyAddress(childNode)}`
   );
 }
 
 // derive the first external change address HDNode which is going to spend utxo
 let change = RVNBOX.HDNode.derivePath(account, "0/0");
 
-// get the rvn2 address
-let rvn2Address = RVNBOX.HDNode.toRvn2Address(change);
+// get the address
+let rvnAddress = RVNBOX.HDNode.toLegacyAddress(change);
 
 let hex;
 
@@ -71,7 +71,7 @@ RVNBOX.Address.utxo(rvnAddress).then(
     let sendAmount = originalAmount - byteCount;
 
     // add output w/ address and amount to send
-    transactionBuilder.addOutput(rvn2Address, sendAmount);
+    transactionBuilder.addOutput(rvnAddress, sendAmount);
 
     // keypair
     let keyPair = RVNBOX.HDNode.toKeyPair(change);
