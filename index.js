@@ -26,13 +26,13 @@ let rootSeed = RVNBOX.Mnemonic.toSeed(mnemonic);
 let masterHDNode = RVNBOX.HDNode.fromSeed(rootSeed);
 
 // HDNode of BIP44 account
-let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/0'/175'/0'");
-console.log(`BIP44 Account: "m/0'/175'/0'"`);
+let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/44'/175'/0'");
+console.log(`BIP44 Account: "m/44'/175'/0'"`);
 
 for (let i = 0; i < 10; i++) {
-  let childNode = masterHDNode.derivePath(`m/0'/175'/0'/0/${i}`);
+  let childNode = masterHDNode.derivePath(`m/44'/175'/0'/0/${i}`);
   console.log(
-    `m/0'/175'/0'/0/${i}: ${RVNBOX.HDNode.toLegacyAddress(childNode)}`
+    `m/44'/175'/0'/0/${i}: ${RVNBOX.HDNode.toLegacyAddress(childNode)}`
   );
 }
 
@@ -52,8 +52,8 @@ RVNBOX.Address.utxo(rvnAddress).then(
 
     // instance of transaction builder
     let transactionBuilder = new RVNBOX.TransactionBuilder("ravencoin");
-    // original amount of corbes in vin
-    let originalAmount = result[0].corbes;
+    // original amount of satoshis in vin
+    let originalAmount = result[0].satoshis;
 
     // index of vout
     let vout = result[0].vout;
