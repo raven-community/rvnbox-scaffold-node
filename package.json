@@ -1,6 +1,6 @@
 {
   "name": "rvnbox-scaffold-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic command line node app w/ RVNBOX bindings",
   "author": "MSFTserver",
   "license": "MIT",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/raven-community/rvnbox-scaffold-node#readme",
   "devDependencies": {
-    "rvnbox-sdk": "github:raven-community/rvnbox-javascript-sdk#master",
+    "rvnbox-sdk": "^1.0.2",
     "coveralls": "^3.0.2",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",

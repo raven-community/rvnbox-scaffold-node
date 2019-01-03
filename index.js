@@ -51,7 +51,7 @@ RVNBOX.Address.utxo(rvnAddress).then(
     }
 
     // instance of transaction builder
-    let transactionBuilder = new RVNBOX.TransactionBuilder("ravencoin");
+    let transactionBuilder = new RVNBOX.TransactionBuilder("testnet");
     // original amount of satoshis in vin
     let originalAmount = result[0].satoshis;
 
